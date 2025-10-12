@@ -7,11 +7,13 @@ import type { Project } from '@/types'
 
 export const revalidate = 60
 
-type PageProps = {
-  params: { slug: string }
-}
-
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  
   const supabase = createClient()
 
   const { data: project, error } = await supabase
@@ -19,7 +21,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     .select(
       'id, created_at, updated_at, title, slug, description, client_name, location, completion_date, featured_image, gallery_images, specifications, category_id'
     )
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .single()
 
   if (error || !project) return notFound()

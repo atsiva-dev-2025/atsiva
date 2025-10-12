@@ -5,9 +5,10 @@ import { requireAuth } from '@/lib/auth/utils';
 // UPDATE inquiry
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await requireAuth();
     const body = await request.json();
     const supabase = createClient();
@@ -15,7 +16,7 @@ export async function PATCH(
     const { data, error } = await supabase
       .from('contacts')
       .update(body)
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
@@ -33,16 +34,17 @@ export async function PATCH(
 // DELETE inquiry
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await requireAuth();
     const supabase = createClient();
 
     const { error } = await supabase
       .from('contacts')
       .delete()
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (error) throw error;
 

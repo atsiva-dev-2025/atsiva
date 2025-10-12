@@ -4,11 +4,17 @@ import { InquiryFilters } from '@/components/admin/InquiryFilters';
 
 export const revalidate = 0;
 
-export default async function InquiriesPage({
-  searchParams,
-}: {
-  searchParams: { status?: string; search?: string };
-}) {
+interface PageProps {
+  searchParams?: {
+    status?: string
+    search?: string
+  }
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const status = searchParams?.status || ''
+  const search = searchParams?.search || ''
+  
   const supabase = createClient();
   
   let query = supabase
@@ -17,13 +23,13 @@ export default async function InquiriesPage({
     .order('created_at', { ascending: false });
 
   // Apply filters
-  if (searchParams.status && searchParams.status !== 'all') {
-    query = query.eq('status', searchParams.status);
+  if (status && status !== 'all') {
+    query = query.eq('status', status);
   }
 
-  if (searchParams.search) {
+  if (search) {
     query = query.or(
-      `full_name.ilike.%${searchParams.search}%,email.ilike.%${searchParams.search}%,company.ilike.%${searchParams.search}%`
+      `full_name.ilike.%${search}%,email.ilike.%${search}%,company.ilike.%${search}%`
     );
   }
 

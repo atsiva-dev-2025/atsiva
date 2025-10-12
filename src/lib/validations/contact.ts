@@ -32,9 +32,11 @@ export const contactSchema = z.object({
     .optional()
     .transform((val) => val ? sanitizeString(val) : val),
   
-  service_interest: z.enum(['solar', 'automation', 'telecom', 'other'], {
-    errorMap: () => ({ message: 'Please select a valid service' })
-  }),
+  service_interest: z
+    .enum(['solar', 'automation', 'telecom', 'other'])
+    .refine((val) => ['solar', 'automation', 'telecom', 'other'].includes(val), {
+      message: 'Please select a valid service',
+    }),
   
   message: z
     .string()

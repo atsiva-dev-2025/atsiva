@@ -11,7 +11,7 @@ export default async function PortfolioPage({
 }) {
   const params = await searchParams;
   
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: categories } = await supabase
     .from('project_categories')

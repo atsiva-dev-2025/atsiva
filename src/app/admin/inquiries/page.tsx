@@ -11,7 +11,7 @@ export default async function InquiriesPage({
 }) {
   const params = await searchParams;
   
-  const supabase = createClient();
+  const supabase = await createClient();
   
   let query = supabase
     .from('contacts')

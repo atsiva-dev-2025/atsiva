@@ -2,7 +2,7 @@
 import { createClient } from '@/lib/supabase/server';
 
 export async function RecentInquiries() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase
     .from('contacts')
     .select('id, full_name, email, status, created_at')

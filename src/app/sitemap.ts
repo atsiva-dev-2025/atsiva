@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://atsiva.com';
   
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: projects } = await supabase
     .from('projects')
     .select('slug, updated_at')

@@ -10,7 +10,7 @@ export async function PATCH(
     const { id } = await params;
     await requireAuth();
     const body = await request.json();
-    const supabase = createClient();
+    const supabase = await createClient();
 
     const { data, error } = await supabase
       .from('projects')
@@ -36,7 +36,7 @@ export async function DELETE(
   try {
     const { id } = await params;
     await requireAuth();
-    const supabase = createClient();
+    const supabase = await createClient();
 
     const { error } = await supabase
       .from('projects')

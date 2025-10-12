@@ -14,7 +14,7 @@ export default async function ProjectDetailPage({
 }) {
   const { slug } = await params;
   
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const { data: project, error } = await supabase
     .from('projects')

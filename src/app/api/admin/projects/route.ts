@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     await requireAuth();
     const body = await request.json();
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Get category_id from categories table by slug
     const { data: category } = await supabase

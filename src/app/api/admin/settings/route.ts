@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { requireAuth } from '@/lib/auth/utils';
 
 export async function GET() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase
     .from('admin_settings')
     .select('email_notifications, admin_email')
@@ -17,7 +17,7 @@ export async function PATCH(request: Request) {
   try {
     await requireAuth();
     const body = await request.json();
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // upsert singleton
     const { data, error } = await supabase

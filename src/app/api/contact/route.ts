@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     const validatedData = contactSchema.parse(body);
 
     // Insert into Supabase
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data, error } = await supabase
       .from('contacts')
       .insert([validatedData])

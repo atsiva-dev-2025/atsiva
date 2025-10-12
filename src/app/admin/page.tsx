@@ -6,7 +6,7 @@ import { MessageSquare, FolderOpen, CheckCircle, Clock } from 'lucide-react';
 export const revalidate = 0; // Disable cache for real-time data
 
 export default async function AdminDashboard() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Fetch statistics
   const [

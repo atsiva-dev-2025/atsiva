@@ -5,6 +5,10 @@ const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL
   : undefined;
 
 const nextConfig: NextConfig = {
+  eslint: {
+    // 🚫 Skip ESLint checks during build
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {

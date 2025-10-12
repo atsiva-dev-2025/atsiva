@@ -40,7 +40,6 @@ export default async function InquiriesPage({
         </div>
       </div>
 
-      {/* @ts-expect-error Server Component in page */}
       <InquiryFilters />
 
       <InquiriesTable inquiries={inquiries || []} />

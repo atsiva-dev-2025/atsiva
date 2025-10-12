@@ -3,9 +3,9 @@
 
 import { forwardRef } from "react";
 import { Loader2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type MotionButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & HTMLMotionProps<'button'> & {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
@@ -13,7 +13,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   rightIcon?: React.ReactNode;
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, MotionButtonProps>(
   ({ className = "", variant = "primary", size = "md", loading, leftIcon, rightIcon, children, disabled, ...props }, ref) => {
     const base =
       "inline-flex items-center justify-center gap-2 rounded-md text-sm font-semibold transition-colors disabled:opacity-60";

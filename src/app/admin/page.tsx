@@ -57,7 +57,6 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Recent Inquiries */}
-      {/* @ts-expect-error Server Component inside page */}
       <RecentInquiries />
     </div>
   );

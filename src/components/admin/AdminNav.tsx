@@ -8,9 +8,14 @@ export function AdminNav() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const res = await fetch('/api/auth/logout', { method: 'POST' });
-    if (res.ok) {
-      router.replace('/login');
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/login');
+      router.refresh();
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Still redirect even if API fails
+      router.push('/login');
     }
   };
 

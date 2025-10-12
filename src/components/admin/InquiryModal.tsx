@@ -100,7 +100,9 @@ export function InquiryModal({ inquiry, onClose }: InquiryModalProps) {
             <label className="text-sm font-medium text-gray-600">Status</label>
             <select
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) =>
+                setStatus(e.target.value as "new" | "in_progress" | "completed" | "archived")
+              }
               className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               <option value="new">New</option>

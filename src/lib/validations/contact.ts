@@ -43,6 +43,13 @@ export const contactSchema = z.object({
     .transform(sanitizeString),
 });
 
-export type ContactFormData = z.infer<typeof contactSchema>;
+export type ContactFormData = {
+  full_name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  service_interest: 'solar' | 'automation' | 'telecom' | 'other';
+  message: string;
+};
 
 

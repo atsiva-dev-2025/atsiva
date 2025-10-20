@@ -272,8 +272,9 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
             <ImageUploader
-              value={formData.featured_image}
-              onChange={(url) => setFormData({ ...formData, featured_image: url })}
+              currentImage={formData.featured_image}
+              onUploadComplete={(url) => setFormData({ ...formData, featured_image: url })}
+              folder="projects"
             />
           </div>
         </div>

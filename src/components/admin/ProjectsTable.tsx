@@ -88,7 +88,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
                     <Button
                       variant="ghost"
                       size="sm"
-                      leftIcon={project.is_published ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                      leftIcon={project.is_published ? <Eye className="w-4 h-4 text-gray-600" /> : <EyeOff className="w-4 h-4 text-gray-600" />}
                       onClick={() => togglePublish(project.id, project.is_published)}
                       title={project.is_published ? 'Unpublish' : 'Publish'}
                     />
@@ -96,7 +96,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
                       <Button
                         variant="ghost"
                         size="sm"
-                        leftIcon={<Edit className="w-4 h-4" />}
+                        leftIcon={<Edit className="w-4 h-4 text-gray-600" />}
                       />
                     </Link>
                     <Button

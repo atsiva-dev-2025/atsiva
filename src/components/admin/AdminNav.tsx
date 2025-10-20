@@ -23,7 +23,7 @@ export function AdminNav() {
     <nav className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">ATSIVA Admin</h1>
+          <h1 className="text-2xl font-bold text-gray-900">NINEPRIME Admin</h1>
           <p className="text-sm text-gray-600">Dashboard Management</p>
         </div>
         
@@ -36,7 +36,8 @@ export function AdminNav() {
           <Button
             variant="outline"
             onClick={handleLogout}
-            leftIcon={<LogOut className="w-4 h-4" />}
+            leftIcon={<LogOut className="w-4 h-4 text-gray-700" />}
+            className="text-gray-700 border-gray-300 hover:bg-gray-50"
           >
             Logout
           </Button>

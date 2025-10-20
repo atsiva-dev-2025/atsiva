@@ -2,13 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { Check, ArrowRight, TrendingDown, Zap, Award, Building2, Calculator, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Commercial Solar Solutions | ATSIVA - Reduce Operating Costs',
+  title: 'Commercial Solar Solutions | NINEPRIME - Reduce Operating Costs',
   description: 'Enterprise solar installations for businesses. Cut energy costs by 70%, improve sustainability, and boost your bottom line.',
 };
 
-export default function CommercialSolarPage() {
+export default async function CommercialSolarPage() {
+  const pageSettings = await getPageSettings('commercial-solar');
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -30,11 +33,10 @@ export default function CommercialSolarPage() {
                 ENTERPRISE SOLAR SOLUTIONS
               </div>
               <h1 className="text-5xl font-bold mb-6">
-                Cut Energy Costs by 70% and Future-Proof Your Business
+                {pageSettings?.hero_heading || 'Cut Energy Costs by 70% and Future-Proof Your Business'}
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Join 200+ Nigerian businesses reducing operating costs, ensuring 24/7 uptime, 
-                and meeting ESG targets with ATSIVA's commercial solar solutions.
+                {pageSettings?.hero_subheading || 'Join 200+ Nigerian businesses reducing operating costs, ensuring 24/7 uptime, and meeting ESG targets with NINEPRIME\'s commercial solar solutions.'}
               </p>
               
               {/* Key Stats */}
@@ -59,9 +61,9 @@ export default function CommercialSolarPage() {
                     Request Proposal
                   </Button>
                 </Link>
-                <Link href="#roi-calculator">
+                <Link href="/portfolio?subcategory=commercial-solar">
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-gray-800">
-                    Calculate ROI <Calculator className="w-4 h-4 ml-2" />
+                    View Projects <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
               </div>
@@ -69,7 +71,7 @@ export default function CommercialSolarPage() {
             
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://plus.unsplash.com/premium_photo-1742418064842-c929972db9e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGluZHVzdHJpYWwlMjBzb2xhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://plus.unsplash.com/premium_photo-1742418064842-c929972db9e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGluZHVzdHJpYWwlMjBzb2xhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=1200&q=80'}
                 alt="Industrial warehouses with solar panels on the roof"
                 fill
                 className="object-cover"
@@ -109,7 +111,7 @@ export default function CommercialSolarPage() {
             </div>
 
             <div className="bg-green-600 text-white p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-6">ATSIVA Solar Delivers</h3>
+              <h3 className="text-2xl font-bold mb-6">NINEPRIME Solar Delivers</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <Check className="w-6 h-6 flex-shrink-0 mt-1" />
@@ -140,7 +142,7 @@ export default function CommercialSolarPage() {
             Ready to Cut Your Energy Costs by 70%?
           </h2>
           <p className="text-xl text-white mb-8">
-            Join 200+ businesses already saving millions with ATSIVA commercial solar solutions.
+            Join 200+ businesses already saving millions with NINEPRIME commercial solar solutions.
             Get your free energy audit and custom proposal today.
           </p>
 

@@ -2,13 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { Check, ArrowRight, Lightbulb, Shield, Cpu, TrendingDown, Smartphone, Eye } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Smart Building & Home Automation | ATSIVA',
+  title: 'Smart Building & Home Automation | NINEPRIME',
   description: 'Transform your building with intelligent automation. Cut costs, enhance security, and boost efficiency.',
 };
 
-export default function AutomationPage() {
+export default async function AutomationPage() {
+  const pageSettings = await getPageSettings('automation');
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -30,11 +33,10 @@ export default function AutomationPage() {
                 SMART AUTOMATION SOLUTIONS
               </div>
               <h1 className="text-5xl font-bold mb-6">
-                Intelligent Buildings That Think for Themselves
+                {pageSettings?.hero_heading || 'Intelligent Buildings That Think for Themselves'}
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Centralize control of lighting, HVAC, security, and energy systems. 
-                Reduce costs by 40%, enhance comfort, and operate 24/7 from your smartphone.
+                {pageSettings?.hero_subheading || 'Centralize control of lighting, HVAC, security, and energy systems. Reduce costs by 40%, enhance comfort, and operate 24/7 from your smartphone.'}
               </p>
               
               <div className="grid grid-cols-3 gap-6 mb-8">
@@ -68,7 +70,7 @@ export default function AutomationPage() {
             
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&q=80'}
                 alt="Smart building automation dashboard"
                 fill
                 className="object-cover"
@@ -206,7 +208,7 @@ export default function AutomationPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Why Automate With ATSIVA?
+            Why Automate With NINEPRIME?
           </h2>
 
           <div className="grid md:grid-cols-4 gap-6">

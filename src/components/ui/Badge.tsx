@@ -16,8 +16,8 @@ export function Badge({ children, color = "default", variant = "solid", classNam
       ? "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-200"
       : color === "amber"
       ? "bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-200"
-      : "bg-black/[0.04] text-foreground dark:bg-white/[0.06]";
-  const outlineStyles = "border border-black/10 dark:border-white/10 bg-transparent text-foreground";
+      : "bg-gray-100 text-gray-800 dark:bg-white/[0.06] dark:text-gray-200";
+  const outlineStyles = "border border-gray-300 dark:border-white/10 bg-transparent text-gray-700 dark:text-gray-200";
 
   return (
     <span

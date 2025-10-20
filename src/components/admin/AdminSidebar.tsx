@@ -7,7 +7,8 @@ import {
   MessageSquare, 
   FolderOpen, 
   Settings,
-  BarChart3 
+  BarChart3,
+  FileText
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -15,6 +16,7 @@ const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/inquiries', label: 'Inquiries', icon: MessageSquare },
   { href: '/admin/projects', label: 'Projects', icon: FolderOpen },
+  { href: '/admin/page-settings', label: 'Page Settings', icon: FileText },
   { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
   { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];

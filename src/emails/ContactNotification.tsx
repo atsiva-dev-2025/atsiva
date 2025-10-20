@@ -34,12 +34,12 @@ export default function ContactNotification({
   return (
     <Html>
       <Head />
-      <Preview>New inquiry from {fullName} - ATSIVA</Preview>
+      <Preview>New inquiry from {fullName} - NINEPRIME</Preview>
       <Body style={main}>
         <Container style={container}>
           <Heading style={h1}>🔔 New Contact Inquiry</Heading>
           <Text style={text}>
-            You have received a new inquiry through the ATSIVA contact form.
+            You have received a new inquiry through the NINEPRIME contact form.
           </Text>
 
           <Hr style={hr} />
@@ -130,7 +130,7 @@ export default function ContactNotification({
           </Section>
 
           <Text style={footer}>
-            This is an automated notification from ATSIVA Contact Form
+            This is an automated notification from NINEPRIME Contact Form
           </Text>
         </Container>
       </Body>

@@ -2,13 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { Check, ArrowRight, Building, Hammer, HardHat, Wrench } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Construction Services | ATSIVA',
+  title: 'Construction Services | NINEPRIME',
   description: 'Complete construction solutions from design to delivery. Residential, commercial, and infrastructure projects.',
 };
 
-export default function ConstructionPage() {
+export default async function ConstructionPage() {
+  const pageSettings = await getPageSettings('construction');
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -30,11 +33,10 @@ export default function ConstructionPage() {
                 CONSTRUCTION SOLUTIONS
               </div>
               <h1 className="text-5xl font-bold mb-6">
-                Building Excellence from Foundation to Finish
+                {pageSettings?.hero_heading || 'Building Excellence from Foundation to Finish'}
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Comprehensive construction services spanning design, engineering, execution, and maintenance. 
-                Delivering quality projects on time, every time.
+                {pageSettings?.hero_subheading || 'Comprehensive construction services spanning design, engineering, execution, and maintenance. Delivering quality projects on time, every time.'}
               </p>
               
               <div className="grid grid-cols-3 gap-6 mb-8">
@@ -68,7 +70,7 @@ export default function ConstructionPage() {
             
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80'}
                 alt="Construction site with modern building"
                 fill
                 className="object-cover"
@@ -266,7 +268,7 @@ export default function ConstructionPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Why Choose ATSIVA Construction?
+            Why Choose NINEPRIME Construction?
           </h2>
 
           <div className="grid md:grid-cols-4 gap-8">

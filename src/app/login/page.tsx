@@ -42,7 +42,7 @@ export default function LoginPage() {
         className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">ATSIVA Admin</h1>
+          <h1 className="text-3xl font-bold text-gray-900">NINEPRIME Admin</h1>
           <p className="text-gray-600 mt-2">Sign in to manage your dashboard</p>
         </div>
 
@@ -57,8 +57,8 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="admin@atsiva.com"
+                className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
+                placeholder="admin@nineprime.com"
                 required
               />
             </div>
@@ -74,7 +74,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
                 placeholder="••••••••"
                 required
               />

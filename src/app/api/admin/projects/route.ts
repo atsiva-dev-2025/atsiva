@@ -2,6 +2,35 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { requireAuth } from '@/lib/auth/utils';
 
+export async function GET() {
+  try {
+    await requireAuth();
+    const supabase = await createClient();
+    
+    const { data: projects } = await supabase
+      .from('projects')
+      .select(`
+        id,
+        title,
+        subcategory,
+        description,
+        project_categories (
+          name,
+          slug
+        )
+      `)
+      .order('created_at', { ascending: false });
+
+    return NextResponse.json({ success: true, projects });
+  } catch (error) {
+    console.error('Projects fetch error:', error);
+    return NextResponse.json(
+      { success: false, message: 'Failed to fetch projects' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   try {
     await requireAuth();

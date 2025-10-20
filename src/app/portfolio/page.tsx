@@ -21,7 +21,7 @@ export default async function PortfolioPage({
   let query = supabase
     .from('projects')
     .select(
-      'id, title, slug, description, featured_image, is_featured, is_published, category_id'
+      'id, title, slug, description, featured_image, is_featured, is_published, category_id, subcategory'
     )
     .eq('is_published', true)
     .order('order_index', { ascending: true })
@@ -43,7 +43,11 @@ export default async function PortfolioPage({
       <h1 className="text-3xl sm:text-4xl font-bold">Projects</h1>
       <p className="text-foreground/70 mt-2">Explore our latest work.</p>
       <div className="mt-8">
-        <ProjectsGrid categories={categories ?? []} projects={projects ?? []} />
+        <ProjectsGrid 
+          categories={categories ?? []} 
+          projects={projects ?? []} 
+          initialFilter={params.subcategory}
+        />
       </div>
     </main>
   );

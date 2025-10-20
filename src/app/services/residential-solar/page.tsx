@@ -3,13 +3,16 @@ import { Check, ArrowRight, Zap, Shield, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Residential Solar Solutions | ATSIVA',
+  title: 'Residential Solar Solutions | NINEPRIME',
   description: 'Clean, affordable solar energy for your home. Save up to 70% on electricity bills.',
 };
 
-export default function ResidentialSolarPage() {
+export default async function ResidentialSolarPage() {
+  const pageSettings = await getPageSettings('residential-solar');
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -28,11 +31,10 @@ export default function ResidentialSolarPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl font-bold mb-6">
-                Power Your Home with Clean Solar Energy
+                {pageSettings?.hero_heading || 'Power Your Home with Clean Solar Energy'}
               </h1>
               <p className="text-xl text-white mb-8">
-                Join thousands of Nigerian homeowners saving up to 70% on electricity bills 
-                with ATSIVA's premium residential solar solutions.
+                {pageSettings?.hero_subheading || 'Join thousands of Nigerian homeowners saving up to 70% on electricity bills with NINEPRIME\'s premium residential solar solutions.'}
               </p>
               <div className="flex gap-4">
                 <Link href="/contact">
@@ -49,7 +51,7 @@ export default function ResidentialSolarPage() {
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://plus.unsplash.com/premium_photo-1680302170840-ad9b1256f40e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTg1fHxyZXNpZGVudGlhbCUyMGhvbWUlMjBzb2xhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://plus.unsplash.com/premium_photo-1680302170840-ad9b1256f40e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTg1fHxyZXNpZGVudGlhbCUyMGhvbWUlMjBzb2xhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=1200&q=80'}
                 alt="Residential home with solar panels"
                 fill
                 className="object-cover"

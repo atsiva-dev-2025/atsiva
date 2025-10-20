@@ -62,7 +62,7 @@ export default function SettingsPage() {
                 value={adminEmail}
                 onChange={(e) => setAdminEmail(e.target.value)}
                 className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                placeholder="admin@atsiva.com"
+                placeholder="admin@nineprime.com"
               />
             </div>
             <p className="text-sm text-gray-500 mt-2">

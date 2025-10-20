@@ -74,7 +74,7 @@ export function ContactForm() {
           <input
             {...register("phone")}
             className="h-10 rounded-md border border-black/10 dark:border-white/10 bg-transparent px-3"
-            placeholder="+1 555 000 0000"
+            placeholder="+234 806 958 5616"
           />
           {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
         </div>
@@ -83,7 +83,7 @@ export function ContactForm() {
           <input
             {...register("company")}
             className="h-10 rounded-md border border-black/10 dark:border-white/10 bg-transparent px-3"
-            placeholder="ATSIVA Ltd."
+            placeholder="NINEPRIME Ltd."
           />
           {errors.company && (
             <p className="text-sm text-red-600">{errors.company.message}</p>
@@ -95,13 +95,13 @@ export function ContactForm() {
         <label className="text-sm font-medium">Service interest</label>
         <select
           {...register("service_interest")}
-          className="h-10 rounded-md border border-black/10 dark:border-white/10 bg-transparent px-3"
+          className="h-10 rounded-md border border-black/10 dark:border-white/10 bg-background text-foreground px-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           defaultValue="solar"
         >
-          <option value="solar">Solar</option>
-          <option value="automation">Automation</option>
-          <option value="telecom">Telecom</option>
-          <option value="other">Other</option>
+          <option value="solar" className="bg-background text-foreground">Solar</option>
+          <option value="automation" className="bg-background text-foreground">Automation</option>
+          <option value="telecom" className="bg-background text-foreground">Telecom</option>
+          <option value="other" className="bg-background text-foreground">Other</option>
         </select>
         {errors.service_interest && (
           <p className="text-sm text-red-600">{errors.service_interest.message}</p>

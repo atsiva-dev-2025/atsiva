@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,22 +16,73 @@ type Project = {
   is_featured: boolean;
   is_published: boolean;
   category_id: string | null;
+  subcategory: string | null;
 };
 
 const tabs = [
   { key: 'all', label: 'All Projects' },
   { key: 'renewable-energy', label: 'Renewable Energy' },
   { key: 'smart-solutions', label: 'Smart Solutions' },
+  { key: 'residential-solar', label: 'Residential Solar' },
+  { key: 'commercial-solar', label: 'Commercial Solar' },
+  { key: 'battery-storage', label: 'Battery Storage' },
+  { key: 'automation', label: 'Automation' },
+  { key: 'telecom', label: 'Telecom' },
+  { key: 'construction', label: 'Construction' },
+  { key: 'it-consulting', label: 'IT & Consulting' },
 ];
 
 export function ProjectsGrid({
   categories,
   projects,
+  initialFilter,
 }: {
   categories: Category[];
   projects: Project[];
+  initialFilter?: string;
 }) {
-  const [active, setActive] = useState<string>('all');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [active, setActive] = useState<string>(initialFilter || 'all');
+
+  // Update active state when URL changes
+  useEffect(() => {
+    const subcategory = searchParams.get('subcategory');
+    const category = searchParams.get('category');
+    
+    if (subcategory) {
+      setActive(subcategory);
+    } else if (category) {
+      setActive(category);
+    } else {
+      setActive('all');
+    }
+  }, [searchParams]);
+
+  const handleTabClick = (tabKey: string) => {
+    setActive(tabKey);
+    
+    // Update URL based on the tab clicked
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (tabKey === 'all') {
+      // Remove all filter parameters
+      params.delete('subcategory');
+      params.delete('category');
+    } else if (['residential-solar', 'commercial-solar', 'battery-storage', 'automation', 'telecom', 'construction', 'it-consulting'].includes(tabKey)) {
+      // It's a subcategory
+      params.set('subcategory', tabKey);
+      params.delete('category');
+    } else {
+      // It's a category
+      params.set('category', tabKey);
+      params.delete('subcategory');
+    }
+    
+    // Update URL
+    const newUrl = params.toString() ? `?${params.toString()}` : '/portfolio';
+    router.push(newUrl);
+  };
 
   const categorySlugById = useMemo(() => {
     const map = new Map<string, string>();
@@ -40,7 +92,13 @@ export function ProjectsGrid({
 
   const filtered = useMemo(() => {
     if (active === 'all') return projects;
-    return projects.filter((p) => categorySlugById.get(p.category_id || '') === active);
+    
+    // Check if it's a category filter
+    const categoryMatch = projects.filter((p) => categorySlugById.get(p.category_id || '') === active);
+    if (categoryMatch.length > 0) return categoryMatch;
+    
+    // Check if it's a subcategory filter
+    return projects.filter((p) => p.subcategory === active);
   }, [active, projects, categorySlugById]);
 
   return (
@@ -52,7 +110,7 @@ export function ProjectsGrid({
           return (
             <button
               key={t.key}
-              onClick={() => setActive(t.key)}
+              onClick={() => handleTabClick(t.key)}
               className={
                 "rounded-full px-4 py-2 text-sm border transition-colors " +
                 (isActive
@@ -80,8 +138,8 @@ export function ProjectsGrid({
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 line-clamp-2">{project.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
+                <p className="text-gray-700 line-clamp-2">{project.description}</p>
               </div>
             </div>
           </Link>

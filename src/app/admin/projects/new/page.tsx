@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import { ImageUpload } from '@/components/admin/ImageUpload';
+import { ImageUploader } from '@/components/admin/ImageUploader';
 
 export default function NewProjectPage() {
   const router = useRouter();
@@ -59,7 +59,7 @@ export default function NewProjectPage() {
       <div className="flex items-center justify-between">
         <div>
           <Link href="/admin/projects">
-            <Button variant="ghost" leftIcon={<ArrowLeft className="w-4 h-4" />}>Back to Projects</Button>
+            <Button variant="ghost" leftIcon={<ArrowLeft className="w-4 h-4 text-gray-700" />} className="text-gray-700 hover:bg-gray-50">Back to Projects</Button>
           </Link>
           <h2 className="text-3xl font-bold text-gray-900 mt-4">Add New Project</h2>
         </div>
@@ -78,7 +78,7 @@ export default function NewProjectPage() {
                 const title = e.target.value;
                 setFormData((prev) => ({ ...prev, title, slug: generateSlug(title) }));
               }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
               placeholder="e.g., 50kW Solar Installation"
             />
           </div>
@@ -91,7 +91,7 @@ export default function NewProjectPage() {
               required
               value={formData.slug}
               onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
               placeholder="50kw-solar-installation"
             />
             <p className="text-sm text-gray-500 mt-1">Will appear as: /portfolio/{formData.slug || 'your-project-slug'}</p>
@@ -104,7 +104,7 @@ export default function NewProjectPage() {
               required
               value={formData.category_id}
               onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
             >
               <option value="">Select category</option>
               <option value="renewable-energy">Renewable Energy</option>
@@ -118,15 +118,16 @@ export default function NewProjectPage() {
             <select
               value={formData.subcategory}
               onChange={(e) => setFormData({ ...formData, subcategory: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
             >
               <option value="">Select subcategory</option>
-              <option value="Residential Solar">Residential Solar</option>
-              <option value="Commercial Solar">Commercial Solar</option>
-              <option value="Battery Storage">Battery Storage</option>
-              <option value="Automation">Automation</option>
-              <option value="Telecom">Telecom</option>
-              <option value="Digital Contracts">Digital Contracts</option>
+              <option value="residential-solar">Residential Solar</option>
+              <option value="commercial-solar">Commercial Solar</option>
+              <option value="battery-storage">Battery Storage</option>
+              <option value="automation">Automation</option>
+              <option value="telecom">Telecom</option>
+              <option value="construction">Construction</option>
+              <option value="it-consulting">IT & Consulting</option>
             </select>
           </div>
 
@@ -137,7 +138,7 @@ export default function NewProjectPage() {
               type="text"
               value={formData.client_name}
               onChange={(e) => setFormData({ ...formData, client_name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
               placeholder="Company or Client Name"
             />
           </div>
@@ -149,7 +150,7 @@ export default function NewProjectPage() {
               type="text"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
               placeholder="City, State"
             />
           </div>
@@ -161,7 +162,7 @@ export default function NewProjectPage() {
               type="date"
               value={formData.completion_date}
               onChange={(e) => setFormData({ ...formData, completion_date: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
             />
           </div>
 
@@ -170,9 +171,10 @@ export default function NewProjectPage() {
             <label className="block text-sm font-medium text-gray-900 mb-2">
               Featured Image
             </label>
-            <ImageUpload
-              onUpload={(url) => setFormData({ ...formData, featured_image: url })}
+            <ImageUploader
+              onUploadComplete={(url) => setFormData({ ...formData, featured_image: url })}
               currentImage={formData.featured_image}
+              folder="projects"
             />
           </div>
 
@@ -184,7 +186,7 @@ export default function NewProjectPage() {
               rows={6}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-500"
               placeholder="Detailed project description..."
             />
           </div>

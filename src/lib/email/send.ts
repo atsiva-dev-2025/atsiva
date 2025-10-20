@@ -17,7 +17,7 @@ export async function sendContactNotification(data: SendContactNotificationParam
   try {
     const { data: emailData, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: process.env.ADMIN_EMAIL || 'admin@atsiva.com',
+      to: process.env.ADMIN_EMAIL || 'admin@nineprime.com',
       subject: `New Inquiry: ${data.serviceInterest} - ${data.fullName}`,
       react: ContactNotification({
         fullName: data.fullName,

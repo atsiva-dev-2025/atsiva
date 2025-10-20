@@ -2,20 +2,23 @@ import { Button } from '@/components/ui/Button';
 import { Check, ArrowRight, Target, Users, Award, Lightbulb, Sun, Cpu, Radio, Hammer } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'About ATSIVA | Leading the Future of Energy & Smart Solutions',
+  title: 'About NINEPRIME | Leading the Future of Energy & Smart Solutions',
   description: 'Pioneering sustainable energy, intelligent automation, and digital infrastructure across Nigeria.',
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const pageSettings = await getPageSettings('about');
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
+            src={pageSettings?.hero_image || 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80'}
             alt="Team collaboration"
             fill
             className="object-cover"
@@ -34,11 +37,10 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Powering Nigeria's Sustainable Future
+              {pageSettings?.hero_heading || 'Powering Nigeria\'s Sustainable Future'}
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              ATSIVA is a multi-disciplinary technology and energy company transforming how businesses 
-              and communities access power, connectivity, and intelligent infrastructure.
+              {pageSettings?.hero_subheading || 'NINEPRIME is a multi-disciplinary technology and energy company transforming how businesses and communities access power, connectivity, and intelligent infrastructure.'}
             </p>
             <div className="flex gap-4 justify-center">
               <Link href="/contact">
@@ -137,7 +139,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">What We Do</h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              ATSIVA operates at the intersection of energy, technology, and infrastructure, 
+              NINEPRIME operates at the intersection of energy, technology, and infrastructure, 
               providing comprehensive solutions across multiple sectors.
             </p>
           </div>
@@ -338,11 +340,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose ATSIVA */}
+      {/* Why Choose NINEPRIME */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Why Choose ATSIVA?
+            Why Choose NINEPRIME?
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -389,7 +391,7 @@ export default function AboutPage() {
             Ready to Transform Your Energy Future?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Let's discuss how ATSIVA can power your business with clean energy, 
+            Let's discuss how NINEPRIME can power your business with clean energy, 
             smart technology, and reliable infrastructure.
           </p>
           <div className="flex gap-4 justify-center">

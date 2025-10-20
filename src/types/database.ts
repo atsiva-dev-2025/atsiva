@@ -41,4 +41,17 @@ export type Project = {
   order_index: number;
 };
 
+export type PageSetting = {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  page_key: string;
+  page_title: string;
+  hero_image?: string;
+  hero_heading?: string;
+  hero_subheading?: string;
+  slideshow_images?: string[];
+  settings?: Record<string, any>;
+};
+
 

@@ -24,11 +24,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'ATSIVA - Clean Solar Energy & Smart Solutions',
+  title: 'NINEPRIME - Clean Solar Energy & Smart Solutions',
   description: 'Leading provider of solar energy solutions and smart automation systems in Nigeria',
   keywords: ['solar energy', 'renewable energy', 'automation', 'telecom', 'Nigeria'],
   openGraph: {
-    title: 'ATSIVA - Clean Solar Energy & Smart Solutions',
+    title: 'NINEPRIME - Clean Solar Energy & Smart Solutions',
     description: 'Leading provider of solar energy solutions and smart automation systems',
     type: 'website',
   },

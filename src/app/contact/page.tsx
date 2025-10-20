@@ -28,7 +28,7 @@ export default function ContactPage() {
           transition={{ duration: 0.2 }}
           className="rounded-xl border border-black/10 dark:border-white/10 p-6 bg-gradient-to-br from-amber-100/50 to-transparent dark:from-amber-300/10"
         >
-          <h2 className="text-xl font-semibold">ATSIVA</h2>
+          <h2 className="text-xl font-semibold">NINEPRIME</h2>
           <p className="text-sm text-foreground/70 mt-1">Clean Solar Energy & Smart Solutions</p>
 
           <ul className="mt-6 space-y-4">
@@ -38,7 +38,7 @@ export default function ContactPage() {
               </span>
               <div>
                 <p className="font-medium">Address</p>
-                <p className="text-foreground/70 text-sm">123 Solar Ave, Green City</p>
+                <p className="text-foreground/70 text-sm">BA 28 Kabiru Auta Street. Gandu, Kano</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -47,7 +47,7 @@ export default function ContactPage() {
               </span>
               <div>
                 <p className="font-medium">Email</p>
-                <p className="text-foreground/70 text-sm">hello@atsiva.com</p>
+                <p className="text-foreground/70 text-sm">info@nineprimesolutions.com</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -56,7 +56,7 @@ export default function ContactPage() {
               </span>
               <div>
                 <p className="font-medium">Phone</p>
-                <p className="text-foreground/70 text-sm">+1 (555) 123-4567</p>
+                <p className="text-foreground/70 text-sm">+2348069585616</p>
               </div>
             </li>
           </ul>

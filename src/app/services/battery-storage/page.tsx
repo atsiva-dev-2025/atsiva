@@ -2,13 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { Check, ArrowRight, Battery, Zap, Clock, Shield, TrendingUp, Home } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Battery Storage Solutions | ATSIVA - 24/7 Power Backup',
+  title: 'Battery Storage Solutions | NINEPRIME - 24/7 Power Backup',
   description: 'Reliable battery backup systems for homes and businesses. Store solar energy, protect against outages, and achieve energy independence.',
 };
 
-export default function BatteryStoragePage() {
+export default async function BatteryStoragePage() {
+  const pageSettings = await getPageSettings('battery-storage');
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -30,11 +33,10 @@ export default function BatteryStoragePage() {
                 ENERGY STORAGE SOLUTIONS
               </div>
               <h1 className="text-5xl font-bold mb-6">
-                Never Experience Power Outages Again
+                {pageSettings?.hero_heading || 'Never Experience Power Outages Again'}
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Store solar energy and enjoy uninterrupted 24/7 power supply with ATSIVA's 
-                advanced lithium battery storage systems. Perfect for homes and businesses.
+                {pageSettings?.hero_subheading || 'Store solar energy and enjoy uninterrupted 24/7 power supply with NINEPRIME\'s advanced lithium battery storage systems. Perfect for homes and businesses.'}
               </p>
               
               {/* Key Stats */}
@@ -69,7 +71,7 @@ export default function BatteryStoragePage() {
             
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1639302610362-4c86747e8680?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cmljJTIwY2FyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://images.unsplash.com/photo-1639302610362-4c86747e8680?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cmljJTIwY2FyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=1200&q=80'}
                 alt="Electric car charging with battery storage"
                 fill
                 className="object-cover"
@@ -109,7 +111,7 @@ export default function BatteryStoragePage() {
             </div>
 
             <div className="bg-purple-600 text-white p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-6">ATSIVA Battery Storage Delivers</h3>
+              <h3 className="text-2xl font-bold mb-6">NINEPRIME Battery Storage Delivers</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <Check className="w-6 h-6 flex-shrink-0 mt-1" />

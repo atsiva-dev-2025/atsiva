@@ -2,13 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { ArrowRight, Radio, Wifi, Globe, Antenna } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPageSettings } from '@/lib/page-settings';
 
 export const metadata = {
-  title: 'Telecom & Connectivity Solutions | ATSIVA',
+  title: 'Telecom & Connectivity Solutions | NINEPRIME',
   description: 'Advanced digital connectivity solutions. Reliable telecom infrastructure for modern businesses.',
 };
 
-export default function TelecomPage() {
+export default async function TelecomPage() {
+  const pageSettings = await getPageSettings('telecom');
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -29,11 +32,10 @@ export default function TelecomPage() {
               TELECOM SOLUTIONS
             </div>
             <h1 className="text-5xl font-bold mb-6">
-              Advanced Digital Connectivity for Modern Business
+              {pageSettings?.hero_heading || 'Advanced Digital Connectivity for Modern Business'}
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Reliable telecom infrastructure, network design, and cutting-edge connectivity solutions 
-              powering your digital transformation.
+              {pageSettings?.hero_subheading || 'Reliable telecom infrastructure, network design, and cutting-edge connectivity solutions powering your digital transformation.'}
             </p>
             
             <div className="flex gap-4 justify-center">
@@ -49,7 +51,7 @@ export default function TelecomPage() {
           <div className="mt-12">
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80"
+                src={pageSettings?.hero_image || 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80'}
                 alt="Telecom infrastructure network"
                 fill
                 className="object-cover"
@@ -140,7 +142,7 @@ export default function TelecomPage() {
           </h2>
           
           <p className="text-2xl text-white mb-8">
-            ATSIVA is partnering with Bilad to bring advanced eSIM technology to Nigeria. 
+            NINEPRIME is partnering with Bilad to bring advanced eSIM technology to Nigeria. 
             Seamless global connectivity for businesses and individuals.
           </p>
 

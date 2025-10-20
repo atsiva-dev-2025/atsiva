@@ -129,7 +129,7 @@ export function PageSettingModal({ setting, onClose }: PageSettingModalProps) {
             <Button
               onClick={handleSave}
               loading={loading}
-              icon={<Save className="w-4 h-4" />}
+              leftIcon={<Save className="w-4 h-4" />}
               className="flex-1"
             >
               Save Changes

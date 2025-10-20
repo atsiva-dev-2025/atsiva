@@ -68,7 +68,7 @@ export function PageSettingsTable({ settings }: PageSettingsTableProps) {
                   <Button
                     variant="outline"
                     size="sm"
-                    icon={<Edit className="w-4 h-4" />}
+                    leftIcon={<Edit className="w-4 h-4" />}
                     onClick={() => handleEdit(setting)}
                   >
                     Edit

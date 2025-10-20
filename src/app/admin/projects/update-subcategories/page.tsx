@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 interface Project {
   id: string;
   title: string;
+  description: string;
   subcategory: string | null;
   project_categories: {
     name: string;

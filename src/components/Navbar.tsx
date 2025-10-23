@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import BrandLogo from "@/components/BrandLogo";
 import {
   Menu,
   X,
@@ -62,31 +63,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-semibold">
-            <div className="flex items-center gap-1">
-              {/* Custom Logo Icon */}
-              <div className="relative w-6 h-6">
-                <svg viewBox="0 0 24 24" className="w-full h-full">
-                  {/* Sun/Spiral Icon */}
-                  <defs>
-                    <linearGradient id="logoIcon" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#fbbf24" />
-                      <stop offset="100%" stopColor="#f97316" />
-                    </linearGradient>
-                  </defs>
-                  <circle cx="12" cy="12" r="8" fill="none" stroke="url(#logoIcon)" strokeWidth="1.5" opacity="0.3"/>
-                  <path d="M12 4 L12 8 M12 16 L12 20 M4 12 L8 12 M16 12 L20 12 M6.34 6.34 L9.17 9.17 M14.83 14.83 L17.66 17.66 M17.66 6.34 L14.83 9.17 M9.17 14.83 L6.34 17.66" stroke="url(#logoIcon)" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="12" cy="12" r="2" fill="url(#logoIcon)"/>
-                </svg>
-              </div>
-              {/* Logo Text */}
-              <div className="flex items-center">
-                <span className="text-sm font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
-                  NINEPRIME
-                </span>
-              </div>
-            </div>
-          </Link>
+          <BrandLogo size={28} priority />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">

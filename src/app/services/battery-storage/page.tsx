@@ -231,10 +231,6 @@ export default async function BatteryStoragePage() {
                   <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span className="text-gray-900">Monitoring app included</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                  <span className="text-gray-900">10-year warranty</span>
-                </li>
               </ul>
 
               <Link href="/contact?package=battery-5kwh">
@@ -275,10 +271,6 @@ export default async function BatteryStoragePage() {
                 <li className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
                   <span>Smart energy management</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <span>15-year warranty</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
@@ -323,10 +315,6 @@ export default async function BatteryStoragePage() {
                 <li className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                   <span className="text-gray-900">Advanced monitoring & analytics</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                  <span className="text-gray-900">15-year warranty</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />

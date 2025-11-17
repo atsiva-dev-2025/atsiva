@@ -478,7 +478,7 @@ export default async function BatteryStoragePage() {
               </summary>
               <p className="mt-3 text-gray-900">
                 Our lithium batteries are rated for 6,000+ charge cycles, translating to 15+ years 
-                of daily use. They come with manufacturer warranties ranging from 10-15 years.
+                of daily use.
               </p>
             </details>
 

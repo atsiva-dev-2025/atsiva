@@ -1,8 +1,15 @@
 import { MetadataRoute } from 'next';
+import { headers } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nineprime.com';
+  // Prefer env if set, otherwise build from the incoming request host (ensures domain matches)
+  const hdrs = headers();
+  const forwardedHost = hdrs.get('x-forwarded-host');
+  const host = forwardedHost || hdrs.get('host') || '';
+  const proto = hdrs.get('x-forwarded-proto') || 'https';
+  const runtimeBase = host ? `${proto}://${host}` : undefined;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || runtimeBase || 'http://localhost:3000';
   
   const supabase = await createClient();
   const { data: projects } = await supabase

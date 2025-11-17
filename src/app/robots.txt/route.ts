@@ -1,10 +1,12 @@
-export async function GET() {
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const base = `${url.protocol}//${url.host}`;
   const robotsTxt = `User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`;
+Sitemap: ${base}/sitemap.xml`;
 
   return new Response(robotsTxt, {
     headers: {

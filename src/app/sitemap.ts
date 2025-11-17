@@ -17,6 +17,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  // Static public pages to include in sitemap
+  const staticPaths = [
+    '/about',
+    // Services
+    '/services/residential-solar',
+    '/services/commercial-solar',
+    '/services/battery-storage',
+    '/services/automation',
+    '/services/telecom',
+    '/services/construction',
+    // Smart Solutions (IT & Consulting)
+    '/smart-solutions/it-consulting',
+    '/smart-solutions/it-consulting/capacity-development',
+    '/smart-solutions/it-consulting/cybersecurity',
+    '/smart-solutions/it-consulting/innovation-labs',
+  ];
+
+  const staticUrls: MetadataRoute.Sitemap = staticPaths.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -36,6 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    ...staticUrls,
     ...projectUrls,
   ];
 }

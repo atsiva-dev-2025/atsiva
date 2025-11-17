@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Prefer env if set, otherwise build from the incoming request host (ensures domain matches)
-  const hdrs = headers();
+  const hdrs = await headers();
   const forwardedHost = hdrs.get('x-forwarded-host');
   const host = forwardedHost || hdrs.get('host') || '';
   const proto = hdrs.get('x-forwarded-proto') || 'https';

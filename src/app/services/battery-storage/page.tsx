@@ -125,10 +125,6 @@ export default async function BatteryStoragePage() {
                   <Check className="w-6 h-6 flex-shrink-0 mt-1" />
                   <span><strong>Maximum solar efficiency</strong> with energy storage</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-6 h-6 flex-shrink-0 mt-1" />
-                  <span><strong>15+ year lifespan</strong> with minimal maintenance</span>
-                </li>
               </ul>
             </div>
           </div>
@@ -549,7 +545,7 @@ export default async function BatteryStoragePage() {
           </p>
           
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 mb-8">
-            <div className="grid md:grid-cols-3 gap-6 text-center">
+            <div className="grid md:grid-cols-2 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold mb-1">Free</div>
                 <div className="text-sm text-gray-300">Energy Audit</div>
@@ -557,10 +553,6 @@ export default async function BatteryStoragePage() {
               <div>
                 <div className="text-3xl font-bold mb-1">24hrs</div>
                 <div className="text-sm text-gray-300">Quote Delivery</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold mb-1">15 Years</div>
-                <div className="text-sm text-gray-300">Warranty</div>
               </div>
             </div>
           </div>
